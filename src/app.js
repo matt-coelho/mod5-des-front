@@ -129,6 +129,7 @@ function showLista() {
     <thead class="thead-dark">
     <tr>
       <th scope="col">${ano_select.value}</th>
+      <th scope="col">Colocação</th>
       <th scope="col">Time</th>
       <th scope="col">P</th>
       <th scope="col">GP</th>
@@ -145,11 +146,11 @@ function showLista() {
 
   let classRow = 0
   let rowClass = ""
-
+  let colocacao = 1
   times.map((time) => {
     if (classRow < 4) {
       rowClass = "table-success"
-    } else if (classRow > 16) {
+    } else if (classRow >= times.length - 4) {
       rowClass = "table-warning"
     } else {
       rowClass = "table-light"
@@ -162,6 +163,7 @@ function showLista() {
       time.nome
     }" width="30" height="30" />
       </td>
+      <td>${colocacao}°</td>
       <td>${time.nome}</td>
       <td>${time.pontos}</td>
       <td>${time.gols_feitos}</td>
@@ -174,6 +176,7 @@ function showLista() {
     </tr>
     `
     classRow += 1
+    colocacao += 1
   })
   lista_table += "</table></div>"
   if (element) {
